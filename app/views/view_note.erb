@@ -1,0 +1,24 @@
+<div>
+
+  <h1>Title: <%= @note.title %></h1>
+  <h3>Content:</h3>
+  <textarea name="box2" cols="30" rows="5"><%= @note.content %></textarea>
+
+  <form id="update_note" method="post" action="/update/<%=@note.id%>">
+    <input type="hidden" name="_method" value="put" />
+    <input type="text" name="update_note[title]" value="<%= @note.title %>">
+    <input type="text" name="update_note[content]" value="<%= @note.content %>">
+    <input type="submit" value="update">
+  </form>
+
+  <form id="delete_note" method="post" action="/delete/<%=@note.id%>">
+    <input type="hidden" name="_method" value="delete"/>
+    <input type="hidden" name="counter" value="<%=@counter%>">
+    <input type="hidden" name="delete_note[@note.id]">
+    <button name="what" type="submit" value="delete">Delete Note</button>
+    <% if @counter == 2 %>
+    <%= erb :_nonotes, :layout => false %>
+    <%end%>
+  </div>
+
+

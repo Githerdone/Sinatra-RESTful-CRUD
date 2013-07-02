@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Welcome</h1>
+  <p>Make Some Crazy Notes!!!</p>
+  
+  <form id="create" method="post" action="/post">
+    <input type="text" name="create[title]" placeholder="Title">
+    <input type="text" name="create[content]" placeholder="Note Content">
+    <input type="submit" value="Create">
+  </form>
+
+  <% if !@notes.empty? %>
+    <% @notes.each do |i| %>
+    <p>
+    <a href="/read/<%=i.id%>">
+      <%=i.title%>
+    </a>
+  </p>
+    <%end%>
+    <%end%>
+
+</div>
+
+
